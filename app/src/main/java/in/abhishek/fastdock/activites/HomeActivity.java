@@ -103,4 +103,11 @@ public class HomeActivity extends LocationBaseActivity {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
+
+    public void startCurrencyChecker(View view) {
+
+        Intent intent = new Intent(this, CurrencyActivity.class);
+        startActivity(intent);
+
+    }
 }
