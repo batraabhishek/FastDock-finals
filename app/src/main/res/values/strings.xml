@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fastdock</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_plan_trip">Plan Trip</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Plan Trip</string>
+</resources>

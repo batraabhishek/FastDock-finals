@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    android:fitsSystemWindows="true"
+    tools:context="in.abhishek.fastdock.activites.PlanTripActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <include layout="@layout/content_map"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_24dp"
+        app:backgroundTint="@color/white_primary_text"/>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/launch_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="96dp"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:onClick="launchTrip"
+        android:src="@drawable/ic_directions"/>
+
+
+</android.support.design.widget.CoordinatorLayout>
