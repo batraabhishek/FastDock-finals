@@ -62,6 +62,7 @@ public class StopAdapter extends BaseAdapter {
         holder.stopName = (TextView) view.findViewById(R.id.list_place);
         holder.stopDistance = (TextView) view.findViewById(R.id.list_distance);
         holder.stopNo = (TextView) view.findViewById(R.id.list_stop);
+        holder.toStop = (TextView) view.findViewById(R.id.list_to_place);
 
         if (i == 0) {
             holder.top.setVisibility(View.INVISIBLE);
@@ -80,6 +81,7 @@ public class StopAdapter extends BaseAdapter {
         holder.stopName.setText(stop.getPlace());
         holder.stopNo.setText("STOP " + stop.getStopNo());
         holder.stopNo.setTextColor(MapFragment.colors[i % MapFragment.colors.length]);
+        holder.toStop.setText("To " + stop.getToStop());
 
         holder.distanceLayout.setBackgroundColor(MapFragment.colors[i % MapFragment.colors.length]);
 
@@ -95,6 +97,7 @@ public class StopAdapter extends BaseAdapter {
         View bottom;
         TextView stopDistance;
         LinearLayout distanceLayout;
+        TextView toStop;
 
     }
 }

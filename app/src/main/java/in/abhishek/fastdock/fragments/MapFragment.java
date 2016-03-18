@@ -73,7 +73,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
 
-    public void addMarker(LatLng point, String placeName, int index) {
+    public void addMarker(LatLng point, String placeName, int index, String completeName) {
 
         TextView textView = new TextView(getContext());
         textView.setText(placeName);
@@ -85,7 +85,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         Bitmap icon = factory.makeIcon();
         mGoogleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(icon))
                 .position(point)
-                .title(placeName));
+                .title(completeName));
 
     }
 
@@ -153,7 +153,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             for (Leg leg : route.getLegs()) {
                 count++;
                 LatLng dest = new LatLng(leg.getStartLocation().getLat(), leg.getStartLocation().getLng());
-                addMarker(dest, "Stop: " + count + ". " + leg.getStartAddress(), count);
+                addMarker(dest, "Stop: " + count + ". " + leg.getStartAddress().substring(0, leg.getStartAddress().indexOf(',')), count, leg.getStartAddress());
 
             }
 

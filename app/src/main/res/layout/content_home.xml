@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/temp_card"
                     android:padding="16dp"
-                    android:text="This is goint to be some long text. While travelling make sure you have enough clothing. Just don't be silly"/>
+                    android:text="@string/default_temp_text"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 

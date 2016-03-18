@@ -95,9 +95,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void addMarker(Place place) {
         mMap.addMarker(new MarkerOptions().position(place.getLatLng()).title(place.getName().toString()));
-        mMap.animateCamera(CameraUpdateFactory.newLatLng(place.getLatLng()));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 10));
     }
-
 
 
     public void findPlace() {
@@ -137,7 +136,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Log.i(TAG, status.getStatusMessage());
 
 
-
             } else if (resultCode == RESULT_CANCELED) {
                 // The user canceled the operation.
             }
@@ -146,11 +144,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void launchTrip(View view) {
 
-        if(mPlaces.size() == 0) {
+        if (mPlaces.size() == 0) {
             Snackbar.make(findViewById(R.id.root), "Add locations first", Snackbar.LENGTH_SHORT).show();
         } else {
             ArrayList<String> strings = new ArrayList<>();
-            for(Place place : mPlaces) {
+            for (Place place : mPlaces) {
                 Log.d(TAG, place.getAddress().toString());
                 strings.add(place.getAddress().toString());
             }

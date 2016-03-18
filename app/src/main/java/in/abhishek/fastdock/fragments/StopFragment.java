@@ -1,9 +1,12 @@
 package in.abhishek.fastdock.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 
@@ -50,6 +53,18 @@ public class StopFragment extends ListFragment {
         setEmptyText("No Route Found");
         getListView().setDividerHeight(0);
 
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Stop stop = mStops.get(i);
+                String startCord = stop.getStartCord();
+                String endCord = stop.getEndCord();
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("http://maps.google.com/maps?saddr=" + startCord + "&daddr=" + endCord));
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -60,7 +75,7 @@ public class StopFragment extends ListFragment {
             Route route = wayPoint.getRoutes().get(0);
             int count = 1;
             for (Leg leg : route.getLegs()) {
-                Stop stop = new Stop(count++, leg.getStartAddress().substring(0, leg.getStartAddress().indexOf(',')), leg.getDistance().getText());
+                Stop stop = new Stop(count++, leg.getStartAddress().substring(0, leg.getStartAddress().indexOf(',')), leg.getDistance().getText(), leg.getEndAddress().substring(0, leg.getEndAddress().indexOf(',')), leg.getStartLocation(), leg.getEndLocation());
                 mStops.add(stop);
 
             }

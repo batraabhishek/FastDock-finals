@@ -59,7 +59,7 @@
 
             <TextView
                 android:id="@+id/list_place"
-                style="@style/TextAppearance.AppCompat.Title"
+                style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rana Pratap Bagh"/>
@@ -67,6 +67,10 @@
             <TextView
                 android:id="@+id/list_to_place"
                 android:layout_width="match_parent"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                android:text="To Rana Pratap Bagh"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
