@@ -253,4 +253,11 @@ public class HomeActivity extends LocationBaseActivity {
         }
         return null;
     }
+
+    public void scanQrCode(View view) {
+
+
+        Intent intent = new Intent(this, ScannerActivity.class);
+        startActivity(intent);
+    }
 }

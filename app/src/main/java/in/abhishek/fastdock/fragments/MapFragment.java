@@ -23,6 +23,9 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
 import com.google.maps.android.ui.IconGenerator;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,13 +122,33 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-        ArrayList<String> wayPoints = getActivity().getIntent().getStringArrayListExtra("data");
-        String source = wayPoints.get(0);
-        wayPoints.remove(0);
+        if (getActivity().getIntent().getBooleanExtra("JSON", false)) {
 
-        source = source.replace("Source: ", "");
+            String data = getActivity().getIntent().getStringExtra("JSON_DATA");
+            try {
+                JSONArray jsonArray = new JSONArray(data);
+                ArrayList<String> strings = new ArrayList<>();
+                String src = null;
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    if (i == 0) {
+                        src = jsonArray.getString(i);
+                    } else {
+                        strings.add(jsonArray.getString(i));
+                    }
+                }
 
-        FindRoute.getResponse(source, source, wayPoints, this);
+                FindRoute.getResponse(src, src, strings, this);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            ArrayList<String> wayPoints = getActivity().getIntent().getStringArrayListExtra("data");
+            String source = wayPoints.get(0);
+            wayPoints.remove(0);
+            source = source.replace("Source: ", "");
+            FindRoute.getResponse(source, source, wayPoints, this);
+        }
     }
 
     public void plotPoints(WayPoint wayPoint) {

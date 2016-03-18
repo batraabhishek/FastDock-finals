@@ -7,4 +7,5 @@
     <string name="default_temp_text">Ah! Its cloudy and dull. Very little chance of rain. You should carry a raincoat just to make sure.</string>
     <string name="title_activity_currency">CurrencyActivity</string>
     <string name="title_activity_panic">PanicActivity</string>
+    <string name="title_activity_scanner">ScannerActivity</string>
 </resources>
